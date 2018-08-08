@@ -47,6 +47,10 @@
       <HintPath>..\packages\SC.Microsoft.Practices.ServiceLocation.8.2.7\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Sitecore.Abstractions, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SC.Sitecore.Abstractions.8.2.7\lib\Sitecore.Abstractions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Sitecore.ContentSearch, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SC.Sitecore.ContentSearch.8.2.7\lib\Sitecore.ContentSearch.dll</HintPath>
       <Private>False</Private>

@@ -8,27 +8,25 @@ namespace Sitecore.ContentSearch.Linq.Solr
 {
   internal static class SolrQuerySerializerUtility
   {
-    public static string Serialize(object query)
-    {
-      return GetQuerySerializer().Serialize(query);
-    }
-
     public static ISolrQuerySerializer GetQuerySerializer()
     {
-      ISolrQuerySerializer solrQuerySerializer = null;
+      ISolrQuerySerializer instance = null;
       try
       {
         IServiceLocator current = ServiceLocator.Current;
-        solrQuerySerializer = ServiceLocator.Current.GetInstance<ISolrQuerySerializer>();
+        instance = ServiceLocator.Current.GetInstance<ISolrQuerySerializer>();
       }
       catch (NullReferenceException)
       {
       }
-      if (solrQuerySerializer == null)
+      if (instance == null)
       {
-        solrQuerySerializer = new DefaultQuerySerializer(new DefaultFieldSerializer());
+        instance = new DefaultQuerySerializer(new DefaultFieldSerializer());
       }
-      return solrQuerySerializer;
+      return instance;
     }
+
+    public static string Serialize(object query) =>
+        GetQuerySerializer().Serialize(query);
   }
 }
