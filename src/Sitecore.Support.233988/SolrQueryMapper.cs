@@ -75,6 +75,8 @@ namespace Sitecore.Support.ContentSearch.Linq.Solr
         Translator = FieldNameTranslator
       };
       RunFormatQueryFieldValuePipeline(formatQueryFieldValueArgs);
+      // this change should be used only when searching untokenized fields (e.g. that have the "string" type)
+      formatQueryFieldValueArgs.FieldValue = formatQueryFieldValueArgs.FieldValue.Replace(" ", "\\ ");
       AbstractSolrQuery abstractSolrQuery = new SolrQueryByField(field.Replace(" ", "_"), "*" + formatQueryFieldValueArgs.FieldValue + "*")
       {
         Quoted = false//formatQueryFieldValueArgs.IsQuoted
@@ -100,6 +102,8 @@ namespace Sitecore.Support.ContentSearch.Linq.Solr
         Translator = FieldNameTranslator
       };
       RunFormatQueryFieldValuePipeline(formatQueryFieldValueArgs);
+      // this change should be used only when searching untokenized fields (e.g. that have the "string" type)
+      formatQueryFieldValueArgs.FieldValue = formatQueryFieldValueArgs.FieldValue.Replace(" ", "\\ ");
       AbstractSolrQuery abstractSolrQuery = new SolrQueryByField(text.Replace(" ", "_"), "*" + formatQueryFieldValueArgs.FieldValue)
       {
         Quoted = false//formatQueryFieldValueArgs.IsQuoted
@@ -142,6 +146,8 @@ namespace Sitecore.Support.ContentSearch.Linq.Solr
         SuppressIsQuotedRule = (fieldQueryTranslators.GetTranslator(field.ToLowerInvariant()) != null)
       };
       RunFormatQueryFieldValuePipeline(formatQueryFieldValueArgs);
+      // this change should be used only when searching untokenized fields (e.g. that have the "string" type)
+      formatQueryFieldValueArgs.FieldValue = formatQueryFieldValueArgs.FieldValue.Replace(" ", "\\ ");
       AbstractSolrQuery abstractSolrQuery = new SolrQueryByField(field.Replace(" ", "_"), formatQueryFieldValueArgs.FieldValue + "*")
       {
         Quoted = false//formatQueryFieldValueArgs.IsQuoted
